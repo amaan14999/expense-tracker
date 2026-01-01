@@ -30,28 +30,39 @@
 		<java.version>21</java.version>
 	</properties>
 	<dependencies>
+
+		<!--Spring Boot Dependencies-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+			<!--for health checks-->
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+			<!--for working with Postgres via JPA/Hibernate-->
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+			<!--for Login, JWT-->
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+			<!--for @NotNull, @Positive, etc. on request fields-->
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+			<!--for building REST APIs-->
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+
+
+		<!--Extrnal drivers-->
 		<dependency>
 			<groupId>org.flywaydb</groupId>
+			<!--for database migrations and versioned schema-->
 			<artifactId>flyway-core</artifactId>
 		</dependency>
 		<dependency>
@@ -61,11 +72,13 @@
 
 		<dependency>
 			<groupId>org.postgresql</groupId>
+			<!--for communicating with postgres-->
 			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
+			<!--to reduce getter/setter/constructor boilerplate-->
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
