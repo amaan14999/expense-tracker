@@ -4,21 +4,19 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name = "categories",
-        uniqueConstraints = @UniqueConstraint(
-                name = "uk_categories_user_name",
-                columnNames = {"user_id", "name"})
-)
+@Table(name = "expenses")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Category {
+public class Expense {
 
     @Id
     @GeneratedValue
@@ -30,12 +28,18 @@ public class Category {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @Column(name = "name", nullable = false, length = 80)
-    private String name;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "category_id", nullable = false)
+    private Category category;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "type", nullable = false, length = 20)
-    private CategoryType type;
+    @Column(name = "amount", nullable = false, precision = 12, scale = 2)
+    private BigDecimal amount;
+
+    @Column(name = "description", length = 500)
+    private String description;
+
+    @Column(name = "expense_date", nullable = false)
+    private LocalDate expenseDate;
 
     @Column(name = "created_at", nullable = false)
     private OffsetDateTime createdAt;
@@ -44,5 +48,4 @@ public class Category {
     void prePersist() {
         if (createdAt == null) createdAt = OffsetDateTime.now();
     }
-
 }
