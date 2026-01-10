@@ -21,7 +21,6 @@ public class AuthService {
             throw new IllegalArgumentException("Email already exists");
         }
         User user = User.builder()
-                .id(UUID.randomUUID())
                 .email(email)
                 .passwordHash(passwordEncoder.encode(password))
                 .name(name)
