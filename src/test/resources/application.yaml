@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: expense-tracker-test
+
+  # Note: No datasource URL or username needed here!
+  # Testcontainers @ServiceConnection handles it.
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+
+  flyway:
+    enabled: true
+
+jwt:
+  # Still need this to prevent the "UnsatisfiedDependencyException"
+  secret: 5367566B59703373367639792F423F4528482B4D6251655468576D5A71347437
+  expiration-ms: 86400000
