@@ -8,10 +8,7 @@ import com.amaan.expense_tracker.service.CategoryService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -35,6 +32,7 @@ public class CategoryController {
         return new CategoryResponse(created.getId(), created.getName(), created.getType());
     }
 
+    @GetMapping
     public List<CategoryResponse> list(@AuthenticationPrincipal User user) {
         return categoryService.listCategories(user)
                 .stream()

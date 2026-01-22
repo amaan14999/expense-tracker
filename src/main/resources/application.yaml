@@ -8,6 +8,11 @@ spring:
     password: expense_pass
     driver-class-name: org.postgresql.Driver
 
+# if unknown fields are sent in the payload.
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: true
+
   jpa:
     hibernate:
       ddl-auto: validate
