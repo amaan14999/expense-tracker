@@ -9,6 +9,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -36,5 +37,10 @@ public class CategoryService {
 
     public List<Category> listCategories(User user) {
         return categoryRepository.findByUser_IdOrderByNameAsc(user.getId());
+    }
+
+    public void deleteCategory(User user) {
+        if(categoryRepository.existsByUser_IdAndNameIgnoreCase(user.getId(), ))
+
     }
 }
